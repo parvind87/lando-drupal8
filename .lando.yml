@@ -1,12 +1,9 @@
 name: drupaltest
 recipe: drupal8
 services:
-  my-service:
-    type: redis
-  cache:
-    type: redis:4.0
-    portforward: 6380
-    persist: true
+  redis:
+      type: redis
+      portforward: true
 config:
   webroot: web
 tooling:
@@ -14,4 +11,4 @@ tooling:
     cmd:
       - "vendor/bin/drupal"
   redis-cli:
-    service: cache
+    service: redis
